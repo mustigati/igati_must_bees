@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import igatiLogo from "../assets/images/projects/partners/IGATI LOGO-01 1.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,62 +14,76 @@ const Header = () => {
     { to: "/contact", label: "Contact" },
   ];
   return (
-    <header className="grid grid-cols-2 fixed top-0 left-0 right-0 z-50 item-center justify-between bg-rose-200 h-[10vh] ">
-      <div className="flex justify-between item-center gap-5 p-5 md:p-0 bg-stone-500">
-        <div>Igati Logo</div>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#2d4a2b] shadow-lg border-b border-[#1f3a1d] transition-all duration-300">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <img 
+              src={igatiLogo} 
+              alt="Igati Logo" 
+              className="w-12 h-12 md:w-16 md:h-16 object-contain"
+            />
+            <div className="hidden lg:block">
+              <h3 className="text-lg font-bold text-white">
+                IGATI/MUST
+              </h3>
+              <p className="text-sm text-amber-300 font-medium">
+                One Million Bee Initiative
+              </p>
+            </div>
+          </Link>
+          <nav className="hidden md:flex items-center gap-8">
+            {links.map((link) => (
+              <NavLink
+                className={({ isActive }) =>
+                  `text-white font-medium hover:text-amber-300 transition-all duration-300 ${
+                    isActive
+                      ? "text-amber-300 border-b-2 border-amber-300 pb-1"
+                      : ""
+                  }`
+                }
+                key={link.to}
+                to={link.to}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
-        <div className=" bg-amber-400 hidden md:block p-5">
-          <h3 className="capitalize text-xl text-white ">
-            Igati/Must one million bee hive Initiative
-          </h3>
-        </div>
-      </div>
-      <div className="bg-[#121907] flex items-center justify-center ">
-        <nav className=" gap-8   hidden  md:flex md:items-center md:justify-center">
-          {links.map((link) => (
-            <NavLink
-              className={({ isActive }) =>
-                `text-white font-normal hover:text-amber-300 transition-all .3s ease-in-out ${
-                  isActive
-                    ? "underline underline-offset-4 font-medium decoration-amber-300"
-                    : ""
-                }`
-              }
-              key={link.to}
-              to={link.to}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
+          <Button
+            variant="outline"
+            size="icon"
+            className="md:hidden border-[#1f3a1d] bg-[#243c22] hover:bg-[#1f3a1d] transition-colors"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-4 w-4 text-white" />
+            ) : (
+              <Menu className="h-4 w-4 text-white" />
+            )}
+          </Button>
 
-        <Button
-          variant="default"
-          size="icon"
-          className="md:hidden bg-amber-500 cursor-pointer text-white ml-auto mr-5 relative"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? (
-            <X className="h-4 w-4" />
-          ) : (
-            <Menu className="h-4 w-4" />
+          {isMenuOpen && (
+            <div className="absolute top-full left-0 right-0 md:hidden bg-[#2d4a2b] border-t border-[#1f3a1d] shadow-lg py-4 z-50">
+              <nav className="flex flex-col items-center gap-4">
+                {links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    className={({ isActive }) =>
+                      `text-white hover:text-amber-300 transition-all duration-300 ${
+                        isActive ? "text-amber-300 font-semibold" : ""
+                      }`
+                    }
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+              </nav>
+            </div>
           )}
-        </Button>
-
-        {isMenuOpen && (
-          <div className="bg-[#121907]/90 absolute top-14 right-0 left-0 md:hidden border-t border-border py-4 z-50 ">
-            <nav className="flex flex-col items-center gap-4">
-              {links.map((link) => (
-                <a
-                  href={link.to}
-                  className="text-white hover:text-amber-300 transition-all .3s ease-in-out"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
+        </div>
       </div>
     </header>
   );

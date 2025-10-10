@@ -6,8 +6,10 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
-      <AboutSection />
-      <WorkSection />
+      <div className="pt-16 md:pt-20">
+        <AboutSection />
+        <WorkSection />
+      </div>
     </div>
   );
 };
