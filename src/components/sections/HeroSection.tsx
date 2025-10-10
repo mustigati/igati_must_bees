@@ -3,7 +3,7 @@ import heroImage from "../../assets/images/hero/igati-bee-keeping-1m-initiative.
 
 const HeroSection = () => {
   return (
-    <div className="min-h-[100vh] top-14 md:top-17 relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
       <div className="">
         <img
           src={heroImage}
