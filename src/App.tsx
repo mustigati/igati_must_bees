@@ -6,6 +6,9 @@ import NotFound from "./pages/Not-Found";
 import Products from "./pages/Products";
 import Projects from "./pages/Projects";
 import Layout from "./layout/layout";
+import Signup from "./pages/Signup";
+import Signin from "./pages/Signin";
+import ForgotPassword from "./pages/ForgotPassword";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -18,6 +21,9 @@ const App = () => {
         { path: "products", element: <Products /> },
         { path: "about", element: <About /> },
         { path: "contact", element: <Contact /> },
+        {path:"signup", element: <Signup />},
+        {path:"signin", element:<Signin />},
+        {path:"forgot-password",element:<ForgotPassword />},
         { path: "*", element: <NotFound /> },
       ],
     },

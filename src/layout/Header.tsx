@@ -13,10 +13,12 @@ const Header = () => {
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
   ];
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#2d4a2b] shadow-lg border-b border-[#1f3a1d] transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <img 
               src={igatiLogo} 
@@ -32,7 +34,9 @@ const Header = () => {
               </p>
             </div>
           </Link>
-          <nav className="hidden md:flex items-center gap-8">
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6">
             {links.map((link) => (
               <NavLink
                 className={({ isActive }) =>
@@ -48,8 +52,36 @@ const Header = () => {
                 {link.label}
               </NavLink>
             ))}
+            
+            {/* Desktop Auth Links */}
+            <div className="flex items-center gap-3 ml-2 pl-6 border-l border-[#1f3a1d]">
+              <NavLink to="/signin">
+                {({ isActive }) => (
+                  <Button 
+                    variant="ghost" 
+                    className={`text-white hover:text-amber-300 hover:bg-[#243c22] cursor-pointer transition-all duration-300 ${
+                      isActive ? "text-amber-300 bg-[#243c22]" : ""
+                    }`}
+                  >
+                    Sign In
+                  </Button>
+                )}
+              </NavLink>
+              <NavLink to="/signup">
+                {({ isActive }) => (
+                  <Button 
+                    className={`bg-amber-500 hover:bg-amber-600 text-[#2d4a2b] font-semibold transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg ${
+                      isActive ? "bg-amber-600" : ""
+                    }`}
+                  >
+                    Sign Up
+                  </Button>
+                )}
+              </NavLink>
+            </div>
           </nav>
 
+          {/* Mobile Menu Button */}
           <Button
             variant="outline"
             size="icon"
@@ -63,9 +95,11 @@ const Header = () => {
             )}
           </Button>
 
+          {/* Mobile Menu */}
           {isMenuOpen && (
             <div className="absolute top-full left-0 right-0 md:hidden bg-[#2d4a2b] border-t border-[#1f3a1d] shadow-lg py-4 z-50">
               <nav className="flex flex-col items-center gap-4">
+                {/* Mobile Navigation Links */}
                 {links.map((link) => (
                   <NavLink
                     key={link.to}
@@ -80,6 +114,33 @@ const Header = () => {
                     {link.label}
                   </NavLink>
                 ))}
+                
+                {/* Mobile Auth Buttons */}
+                <div className="flex flex-col items-center gap-3 mt-4 pt-4 border-t border-[#1f3a1d] w-full px-8">
+                  <NavLink to="/signin" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                    {({ isActive }) => (
+                      <Button 
+                        variant="outline" 
+                        className={`w-full border-amber-300 text-amber-300 hover:bg-[#243c22] transition-all duration-300 ${
+                          isActive ? "bg-[#243c22]" : ""
+                        }`}
+                      >
+                        Sign In
+                      </Button>
+                    )}
+                  </NavLink>
+                  <NavLink to="/signup" className="w-full" onClick={() => setIsMenuOpen(false)}>
+                    {({ isActive }) => (
+                      <Button 
+                        className={`w-full bg-amber-500 hover:bg-amber-600 text-[#2d4a2b] font-semibold transition-all duration-300 ${
+                          isActive ? "bg-amber-600" : ""
+                        }`}
+                      >
+                        Sign Up
+                      </Button>
+                    )}
+                  </NavLink>
+                </div>
               </nav>
             </div>
           )}
