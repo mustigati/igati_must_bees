@@ -9,6 +9,7 @@ interface SignupForm {
   email: string;
   password: string;
   confirmPassword: string;
+  phoneNumber: string;
 }
 
 const Signup: React.FC = () => {
@@ -18,6 +19,7 @@ const Signup: React.FC = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    phoneNumber: "",
   });
   const [errors, setErrors] = useState<Partial<SignupForm>>({});
   const [loading, setLoading] = useState(false);
@@ -36,6 +38,9 @@ const Signup: React.FC = () => {
       errs.password = "Password must be at least 6 characters";
     if (form.confirmPassword !== form.password)
       errs.confirmPassword = "Passwords do not match";
+    if (!form.phoneNumber) errs.phoneNumber = "Phone number is required";
+    else if (!/^\+?[\d\s\-()]+$/.test(form.phoneNumber))
+      errs.phoneNumber = "Invalid phone number";
     return errs;
   };
 
@@ -76,6 +81,15 @@ const Signup: React.FC = () => {
           onChange={handleChange}
           placeholder="you@example.com"
           error={errors.email}
+        />
+        <Input
+          label="Phone Number"
+          name="phoneNumber"
+          type="tel"
+          value={form.phoneNumber}
+          onChange={handleChange}
+          placeholder="Enter your phone number"
+          error={errors.phoneNumber}
         />
         <Input
           label="Password"
