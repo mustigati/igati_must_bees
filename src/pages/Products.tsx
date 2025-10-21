@@ -1,10 +1,11 @@
+import MarketPlace from "@/components/marketplace/marketplace";
 import PromoCarousel from "@/components/marketplace/promoCarousel";
 
 const Products = () => {
   return (
     <div className="pt-16 md:pt-20 min-h-screen">
       <div className="container mx-auto px-4 py-3">
-        <div className="bg-amber-400 w-full px-4 py-3 rounded">
+        <div className="bg-amber-500 w-full px-4 py-3 rounded">
           <h1 className="text-lg font-bold text-gray-700">
             Igati/MUST Marketplace
           </h1>
@@ -15,9 +16,10 @@ const Products = () => {
             Grab our best selling products
           </h4>
           <PromoCarousel />
+          <MarketPlace />
         </div>
       </div>
-    </div>e
+    </div>
   );
 };
 

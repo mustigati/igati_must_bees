@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
+import CartTab from "./cartTab";
 
 const Layout = () => {
   return (
@@ -10,6 +11,8 @@ const Layout = () => {
       <main className="flex-initial">
         <Outlet />
       </main>
+
+      <CartTab />
 
       <Footer />
     </div>

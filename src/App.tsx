@@ -9,6 +9,7 @@ import Layout from "./layout/layout";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import ForgotPassword from "./pages/ForgotPassword";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -21,9 +22,9 @@ const App = () => {
         { path: "products", element: <Products /> },
         { path: "about", element: <About /> },
         { path: "contact", element: <Contact /> },
-        {path:"signup", element: <Signup />},
-        {path:"signin", element:<Signin />},
-        {path:"forgot-password",element:<ForgotPassword />},
+        { path: "signup", element: <Signup /> },
+        { path: "signin", element: <Signin /> },
+        { path: "forgot-password", element: <ForgotPassword /> },
         { path: "*", element: <NotFound /> },
       ],
     },
@@ -31,6 +32,7 @@ const App = () => {
   return (
     <div>
       <RouterProvider router={router} />
+      <Toaster position="bottom-right" />
     </div>
   );
 };
