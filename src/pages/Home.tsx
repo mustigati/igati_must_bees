@@ -4,12 +4,10 @@ import WorkSection from "@/components/sections/WorkSection";
 
 const Home = () => {
   return (
-    <div>
+    <div className="pt-16 md:pt-20">
       <HeroSection />
-      <div className="pt-16 md:pt-20">
-        <AboutSection />
-        <WorkSection />
-      </div>
+      <AboutSection />
+      <WorkSection />
     </div>
   );
 };

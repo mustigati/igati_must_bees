@@ -15,18 +15,19 @@ const Header = () => {
   ];
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#2d4a2b] shadow-lg border-b border-[#1f3a1d] transition-all duration-300">
-      <div className="container mx-auto px-4">
+      <div className="container items-center mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <img 
-              src={igatiLogo} 
-              alt="Igati Logo" 
-              className="w-12 h-12 md:w-16 md:h-16 object-contain"
+          <Link
+            to="/"
+            className="flex items-center gap-3 hover:opacity-80 transition-opacity "
+          >
+            <img
+              src={igatiLogo}
+              alt="Igati Logo"
+              className="size-30 object-contain"
             />
             <div className="hidden lg:block">
-              <h3 className="text-lg font-bold text-white">
-                IGATI/MUST
-              </h3>
+              <h3 className="text-lg font-bold text-white">IGATI/MUST</h3>
               <p className="text-sm text-amber-300 font-medium">
                 One Million Bee Initiative
               </p>
