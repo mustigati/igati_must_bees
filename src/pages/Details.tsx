@@ -39,20 +39,20 @@ const Details = () => {
           <h1 className="text-4xl uppercase font-bold">{detail?.name}</h1>
           <p className="text-2xl font-bold">{detail?.price}</p>
 
-          {/* <div className="flex gap-5">
+          <div className="flex gap-5">
             <div className="flex gap-2 justify-center items-center ">
               <button
                 className="bg-gray-100 h-full w-10 font-bold text-xl rounded-xl flex items-center justify-center"
-                onClick={handleMinusQuantity}
+                // onClick={handleMinusQuantity}
               >
                 -
               </button>
               <button className="bg-gray-100 h-full w-10 font-bold text-xl rounded-xl flex items-center justify-center">
-                {quantity}
+                1
               </button>
               <button
                 className="bg-gray-100 h-full w-10 font-bold text-xl rounded-xl flex items-center justify-center"
-                onClick={handleAddQuantity}
+                // onClick={handleAddQuantity}
               >
                 +
               </button>
@@ -60,11 +60,11 @@ const Details = () => {
 
             <button
               className="bg-slate-900 text-white px-7 py-3 rounded-xl cursor-pointer shadow-2xl"
-              onClick={handleAddToCart}
+              //   onClick={handleAddToCart}
             >
               Add To Cart
             </button>
-          </div> */}
+          </div>
 
           <p>{detail?.description}</p>
         </div>
