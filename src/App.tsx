@@ -10,6 +10,7 @@ import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
 import ForgotPassword from "./pages/ForgotPassword";
 import { Toaster } from "react-hot-toast";
+import Details from "./pages/Details";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -26,6 +27,7 @@ const App = () => {
         { path: "signin", element: <Signin /> },
         { path: "forgot-password", element: <ForgotPassword /> },
         { path: "*", element: <NotFound /> },
+        { path: "products/:slug", element: <Details /> },
       ],
     },
   ]);

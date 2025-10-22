@@ -4,9 +4,20 @@ import ugaliImage from "../../assets/images/marketplace/product-ugali.jpg";
 import jellyImage from "../../assets/images/marketplace/product-jelly.jpg";
 import beehiveImage from "../../assets/images/marketplace/product-beehive.jpg";
 
+export type Product = {
+  id: string;
+  slug: string;
+  image: string;
+  name: string;
+  description: string;
+  price: string;
+  priceValue: number;
+};
+
 const productsCardData = [
   {
     id: "honey-250",
+    slug: "pure-honey-250g",
     image: honeyImage,
     name: "Pure Honey - 250g",
     description: "100% natural raw honey from our sustainable bee farms",
@@ -15,6 +26,7 @@ const productsCardData = [
   },
   {
     id: "honey-500",
+    slug: "pure-honey-500g",
     image: honeyImage,
     name: "Pure Honey - 500g",
     description: "100% natural raw honey from our sustainable bee farms",
@@ -23,6 +35,7 @@ const productsCardData = [
   },
   {
     id: "honey-1kg",
+    slug: "pure-honey-1kg",
     image: honeyImage,
     name: "Pure Honey - 1kg",
     description: "100% natural raw honey from our sustainable bee farms",
@@ -31,6 +44,7 @@ const productsCardData = [
   },
   {
     id: "wimbi",
+    slug: "pure-wimbi-porridge-flour",
     image: wimbiImage,
     name: "Pure Wimbi Porridge Flour",
     description: "Nutritious finger millet flour for healthy porridge",
@@ -39,6 +53,7 @@ const productsCardData = [
   },
   {
     id: "ugali",
+    slug: "ugali-afya-maize-meal",
     image: ugaliImage,
     name: "Ugali Afya Maize Meal",
     description: "Premium quality maize meal for perfect ugali",
@@ -47,6 +62,7 @@ const productsCardData = [
   },
   {
     id: "jelly",
+    slug: "igati-milking-jelly",
     image: jellyImage,
     name: "Igati Milking Jelly",
     description: "Natural milking supplement for healthier livestock",
@@ -55,6 +71,7 @@ const productsCardData = [
   },
   {
     id: "beehive",
+    slug: "bee-hive",
     image: beehiveImage,
     name: "Bee Hive",
     description: "Quality beehive for purchase or sponsorship program",
