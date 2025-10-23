@@ -3,11 +3,16 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, ShoppingCart, X } from "lucide-react";
 import igatiLogo from "../assets/images/projects/partners/IGATI LOGO-01 1.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "@/stores";
+import { toggleStatusTab } from "@/stores/cart";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  //togglecarttab
+
+  const dispatch = useDispatch();
 
   //cart items display
 
@@ -19,6 +24,11 @@ const Header = () => {
     carts.forEach((item) => (total += item.quantity));
     setTotalQuantity(total);
   }, [carts]);
+
+  const handleOpenTabCart = () => {
+    console.log("Clicked");
+    dispatch(toggleStatusTab());
+  };
 
   const links = [
     { to: "/", label: "Home" },
@@ -71,6 +81,7 @@ const Header = () => {
             <div className="flex items-center gap-3 ml-2 pl-6 border-l border-[#1f3a1d]">
               {/* //cart button */}
               <Button
+                onClick={handleOpenTabCart}
                 variant={"outline"}
                 className="hover:bg-amber-600 hover:text-white outline-none cursor-pointer transition-all duration-300 border-none relative"
               >

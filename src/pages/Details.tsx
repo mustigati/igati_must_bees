@@ -48,7 +48,7 @@ const Details = () => {
   };
 
   return (
-    <div className="pt-20 h-[95vh]">
+    <div className="pt-20 h-[100vh]">
       {/* <h2 className=" text-lg md:text-3xl text-center">PRODUCT DETAILS</h2> */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 mt-5">
