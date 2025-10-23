@@ -1,11 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, ShoppingCart, X } from "lucide-react";
 import igatiLogo from "../assets/images/projects/partners/IGATI LOGO-01 1.png";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/stores";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  //cart items display
+
+  const [totalQuantity, setTotalQuantity] = useState(0);
+  const carts = useSelector((store: RootState) => store.cart.items);
+
+  useEffect(() => {
+    let total = 0;
+    carts.forEach((item) => (total += item.quantity));
+    setTotalQuantity(total);
+  }, [carts]);
+
   const links = [
     { to: "/", label: "Home" },
     { to: "/projects", label: "Projects" },
@@ -55,13 +69,19 @@ const Header = () => {
 
             {/* Desktop Auth Links */}
             <div className="flex items-center gap-3 ml-2 pl-6 border-l border-[#1f3a1d]">
+              {/* //cart button */}
               <Button
                 variant={"outline"}
-                className="hover:bg-amber-600 hover:text-white outline-none cursor-pointer transition-all duration-300 border-none"
+                className="hover:bg-amber-600 hover:text-white outline-none cursor-pointer transition-all duration-300 border-none relative"
               >
                 <ShoppingCart className="w-4 h-4" />
                 <span className="ml-2 hidden sm:inline">Cart</span>
+
+                <span className="absolute top-2/3 right-0 bg-red-500 text-white text-sm w-5 h-5 rounded-full flex justify-center items-center">
+                  {totalQuantity}
+                </span>
               </Button>
+
               <NavLink to="/signin">
                 {({ isActive }) => (
                   <Button
